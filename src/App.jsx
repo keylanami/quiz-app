@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Clock, CheckCircle, XCircle, AlertCircle, LogOut } from "lucide-react";
-import "@fontsource/jetbrains-mono"; // pastikan sudah install: npm install @fontsource/jetbrains-mono
+import "@fontsource/jetbrains-mono"; 
 
 const QuizApp = () => {
   const [username, setUsername] = useState("");
