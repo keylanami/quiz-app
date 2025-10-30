@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Clock, CheckCircle, XCircle, AlertCircle, LogOut } from "lucide-react";
-import "@fontsource/jetbrains-mono"; 
+import "@fontsource/jetbrains-mono";
 
 const QuizApp = () => {
   const [username, setUsername] = useState("");
@@ -96,7 +96,9 @@ const QuizApp = () => {
   };
 
   const calc = () => {
-    let c = 0, w = 0, ans = 0;
+    let c = 0,
+      w = 0,
+      ans = 0;
     answers.forEach((a, i) => {
       if (a !== null) {
         ans++;
@@ -130,17 +132,19 @@ const QuizApp = () => {
   const baseBg = "bg-neutral-50";
   const baseText = "text-neutral-900";
 
-
   if (!isLoggedIn)
     return (
-      <div className={`fixed inset-0 flex items-center justify-center ${baseBg} font-['JetBrains_Mono']`}>
-        <div className="w-[400px] bg-white border border-neutral-200 rounded-2xl shadow-md p-8">
+      <div
+        className={`fixed inset-0 flex items-center justify-center ${baseBg} font-['JetBrains_Mono']`}
+      >
+        <div className="w-2xl bg-white border border-neutral-200 rounded-2xl shadow-md p-8">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-14 h-14 bg-neutral-900 text-white rounded-xl mb-4 text-3xl">
-              🎯
-            </div>
-            <h1 className="text-2xl font-bold text-neutral-900">Kuis Anime & Manga</h1>
-            <p className="text-neutral-600 text-sm mt-1">Uji pengetahuanmu sekarang!</p>
+            <h1 className="text-2xl font-bold text-neutral-900">
+              Kuis Anime & Manga
+            </h1>
+            <p className="text-neutral-600 text-sm mt-1">
+              Uji pengetahuanmu sekarang!
+            </p>
           </div>
           <form onSubmit={handleLogin} className="space-y-4">
             <input
@@ -150,9 +154,16 @@ const QuizApp = () => {
               placeholder="Masukkan nama..."
               className="w-full border border-neutral-300 rounded-xl px-4 py-3 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-800/30"
             />
+            {!username.trim() && (
+              <p className="text-sm text-red-500 animate-fade-in">
+                Nama tidak boleh kosong
+              </p>
+            )}
+
             <button
               disabled={!username.trim()}
-              className="w-full bg-neutral-900 text-white font-semibold py-3 rounded-xl transition-all hover:bg-neutral-800 active:scale-[0.97] disabled:opacity-50"
+              className="w-full bg-neutral-900 text-white font-semibold py-3 rounded-xl transition-all 
+             hover:bg-neutral-800 active:bg-neutral-950 active:scale-[0.97] disabled:opacity-50"
             >
               Mulai Kuis
             </button>
@@ -163,7 +174,9 @@ const QuizApp = () => {
 
   if (loading)
     return (
-      <div className={`fixed inset-0 flex items-center justify-center ${baseBg}`}>
+      <div
+        className={`fixed inset-0 flex items-center justify-center ${baseBg}`}
+      >
         <div className="flex flex-col items-center gap-4 font-['JetBrains_Mono']">
           <div className="w-16 h-16 border-4 border-neutral-200 border-t-neutral-800 rounded-full animate-spin"></div>
           <p className="text-neutral-700 font-medium">Memuat soal...</p>
@@ -173,7 +186,9 @@ const QuizApp = () => {
 
   if (error)
     return (
-      <div className={`fixed inset-0 flex items-center justify-center ${baseBg}`}>
+      <div
+        className={`fixed inset-0 flex items-center justify-center ${baseBg}`}
+      >
         <div className="w-[400px] bg-white border border-neutral-200 rounded-2xl shadow-md p-8 text-center font-['JetBrains_Mono']">
           <div className="inline-flex items-center justify-center w-14 h-14 bg-neutral-100 rounded-full mb-4">
             <AlertCircle className="w-8 h-8 text-neutral-700" />
@@ -190,20 +205,21 @@ const QuizApp = () => {
       </div>
     );
 
-  
   if (isQuizFinished) {
     const r = calc();
     const percent = ((r.c / questions.length) * 100).toFixed(1);
     return (
-      <div className={`fixed inset-0 flex items-center justify-center ${baseBg} font-['JetBrains_Mono']`}>
+      <div
+        className={`fixed inset-0 flex items-center justify-center ${baseBg} font-['JetBrains_Mono']`}
+      >
         <div className="w-[600px] bg-white border border-neutral-200 rounded-2xl shadow-md p-10 text-center">
           <div className="mb-6">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-neutral-900 text-white rounded-full mb-4 text-4xl">
-              🎉
-            </div>
-            <h2 className="text-2xl font-bold text-neutral-900 mb-1">Kuis Selesai!</h2>
+            <h2 className="text-2xl font-bold text-neutral-900 mb-1">
+              Kuis Selesai!
+            </h2>
             <p className="text-neutral-600">
-              Selamat <span className="font-semibold">{username}</span>, ini hasilmu!
+              Selamat <span className="font-semibold">{username}</span>, ini
+              hasilmu!
             </p>
           </div>
 
@@ -228,13 +244,15 @@ const QuizApp = () => {
           <div className="flex gap-3 justify-center">
             <button
               onClick={resetQuiz}
-              className="bg-neutral-900 text-white font-semibold px-6 py-3 rounded-xl hover:bg-neutral-800 active:scale-[0.97]"
+              className="bg-neutral-900 text-white font-semibold px-6 py-3 rounded-xl 
+               hover:bg-neutral-800 active:bg-neutral-950 active:scale-[0.97] transition-all"
             >
               Ulangi
             </button>
             <button
               onClick={handleLogout}
-              className="bg-neutral-100 border border-neutral-300 text-neutral-700 font-semibold px-6 py-3 rounded-xl hover:bg-neutral-200 active:scale-[0.97]"
+              className="bg-white border border-neutral-300 text-neutral-800 font-semibold px-6 py-3 rounded-xl 
+               hover:bg-neutral-100 active:bg-neutral-200 active:scale-[0.97] transition-all"
             >
               Keluar
             </button>
@@ -244,15 +262,15 @@ const QuizApp = () => {
     );
   }
 
- 
   const q = questions[currentQuestion];
   const progress = ((currentQuestion + 1) / questions.length) * 100;
   const low = timeLeft <= 60;
 
   return (
-    <div className={`fixed inset-0 flex items-center justify-center ${baseBg} overflow-hidden font-['JetBrains_Mono']`}>
+    <div
+      className={`fixed inset-0 flex items-center justify-center ${baseBg} overflow-hidden font-['JetBrains_Mono']`}
+    >
       <div className="relative w-[700px] h-[600px] bg-white border border-neutral-200 rounded-2xl shadow-md p-8 flex flex-col">
-        {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-neutral-900 text-white flex items-center justify-center rounded-full font-semibold">
@@ -285,7 +303,6 @@ const QuizApp = () => {
           />
         </div>
 
-      
         <div className="flex-1 flex flex-col justify-center">
           <h3 className="text-lg font-semibold text-neutral-900 mb-6 line-clamp-3">
             {q.question}
